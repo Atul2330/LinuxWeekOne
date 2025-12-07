@@ -1,0 +1,40 @@
+# Creating and moving to my Project directory
+cd /home/atul/Documents/Cloud/Linux
+mkdir Git
+cd Git
+
+#Creating user
+sudo adduser atuls
+
+#Installing nginx
+sudo apt update
+sudo apt install nginx
+
+#Managing service(MySQL)
+systemctl status mysql
+sudo systemctl disable mysql
+sudo systemctl stop mysql
+sudo systemctl start mysql
+sudo systemctl enable mysql
+sudo systemctl restart mysql
+
+# Displaying log of 1 hour for MySQL
+journalctl -u mysql --since '1 hour ago'
+
+# Creating a textfile.txt to manipute its permission
+touch textfile.txt
+ls -l
+nano textfile.txt
+./textfile.txt (won't work as we dont have permission to execute )
+chmod u+wrx textfile.txt || chmod u+x textfile.txt
+./textfile.txt (works)
+
+#Changing ownership of this textfile.txt to atuls
+sudo chown atuls textfile.txt (changes ownership to atuls)
+sudo chown atul textfile.txt (changes ownership back to atul)
+
+#Cleaning up
+rm textfile.txt
+ls -l 
+sudo userdel -r atuls
+ls -l /home
